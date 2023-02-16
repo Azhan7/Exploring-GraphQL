@@ -1,0 +1,20 @@
+type Query{
+    #These methods will be used to get the result they want
+
+    #[] It returns the array of Book
+    allBooks:[Book]
+
+    getBook(bookId: Int): Book
+}
+
+
+type Book{
+#! denotes this can't be null
+#ID is GraphQL's Type
+    id: ID!
+    title: String
+    desc: String
+    author: String
+    price: Float
+
+}
