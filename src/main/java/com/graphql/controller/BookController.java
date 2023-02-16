@@ -2,6 +2,9 @@ package com.graphql.controller;
 
 import com.graphql.entities.Book;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.graphql.service.BookService;
@@ -20,13 +23,13 @@ public class BookController {
         return this.bookService.create(book);
     }
 
-    @GetMapping()
+    @QueryMapping("allBooks")
     public List<Book> getAllBooks(){
         return this.bookService.getAllBook();
     }
 
-    @GetMapping("/{bookId}")
-    public Book get(@PathVariable int bookId){
+    @QueryMapping("getBook")
+    public Book get(@Argument int bookId){
         return this.bookService.getBook(bookId);
     }
 }
